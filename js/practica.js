@@ -1,6 +1,6 @@
 let breaks = true;
 const btn = document.getElementById('btn');
-import { captureImage } from './funcion.js';
+import { captureImage, descargaImagen } from './funcion.js';
 btn.addEventListener('click', () => {
     console.log('click');
     init();
@@ -55,7 +55,9 @@ async function predict() {
         labelContainer.childNodes[i].innerHTML = classPrediction;
         if (breaks) {
             if (prediction[i].probability > 0.80 && i == 1) {
-                captureImage(prediction[i].className, webcam.canvas);
+                const img=captureImage(prediction[i].className, webcam.canvas);
+                imagenes.appendChild(img);
+                console.log(descargaImagen(img));
                 breaks = false;
             }
         }
