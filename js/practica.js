@@ -1,16 +1,16 @@
-let breaks = true;
-const btn = document.getElementById('btn');
-import { captureImage } from './funcion.js';
-btn.addEventListener('click', () => {
-    console.log('click');
-    init();
-});
+import { captureImage , DatosForm } from './funcion.js';
 
+// const btn_start = document.getElementById('btn-start');
+const btn_Reiniciar=document.getElementById('btn-Reiniciar');
 const imagenes=document.getElementById('imagenes');
+const form = document.getElementById('form-datos');
+let datos = {};
+let breaks = true;
+
 // the link to your model provided by Teachable Machine export panel
 const URL = "https://teachablemachine.withgoogle.com/models/4mfXsEdPe/";
 
-let model, webcam, labelContainer, maxPredictions;
+let model, webcam, labelContainer, maxPredictions; 
 
 // Load the image model and setup the webcam
 async function init() {
@@ -26,7 +26,7 @@ async function init() {
 
     // Convenience function to setup a webcam
     const flip = true; // whether to flip the webcam
-    webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+    webcam = new tmImage.Webcam(400, 400, flip); // width, height, flip
     await webcam.setup(); // request access to the webcam
     await webcam.play();
     window.requestAnimationFrame(loop);
@@ -38,6 +38,15 @@ async function init() {
         labelContainer.appendChild(document.createElement("div"));
     }
 }
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    datos = DatosForm(form.nombre.value, form.apellido.value, form.edad.value, form.sexo.value);
+    console.log(datos.nombre);
+    init();
+});
+
 
 async function loop() {
     webcam.update(); // update the webcam frame
@@ -57,12 +66,14 @@ async function predict() {
             if (prediction[i].probability > 0.80 && i == 1) {
                 captureImage(prediction[i].className, webcam.canvas);
                 breaks = false;
+                btn_Reiniciar.style.display='inline';
             }
         }
     }
 }
-const btn2=document.getElementById('btn2');
-btn2.addEventListener('click',()=>{
+
+btn_Reiniciar.addEventListener('click',()=>{
     breaks=true;
     imagenes.innerHTML='';
+    btn_Reiniciar.style.display='none';
 });

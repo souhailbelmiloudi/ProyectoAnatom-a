@@ -16,3 +16,14 @@ export const captureImage = (className, canvas) => {
     // Eliminar el enlace después de la descarga
     document.body.removeChild(downloadLink);
 }
+
+export const DatosForm = ( nombre, apellido, edad , sexo) => {
+    const datos = {
+        nombre : nombre,
+        apellido : apellido,
+        edad : edad,
+        sexo : sexo
+    }
+    return datos;
+}
+
