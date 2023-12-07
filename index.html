@@ -1,19 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilo.css">
+  <title> Anatomía </title>
 </head>
-<body>
-    <div>Teachable Machine Image Model</div>
-    <button type="button" id="btn">Start</button>
-    <div id="webcam-container"></div>
-    <div id="label-container"></div>
-    <div id="imagenes"></div>
-    <button type="button" id="btn2">Reiniciar</button>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script src="js/practica.js" type="module"></script>
+<body class="grid-container">
+ <header class="header">
+  <h1>
+    <a href="index.html">Anatomía</a>
+  </h1>
+ </header>
+ <nav class="nav">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="index.html">Haz tu prueba</a></li>
+  </ul>
+  </nav>
+  <aside class="aside">
+    <h2> Datos de paciente </h2>
+    <form action="" class="form-datos" id="form-datos">
+        <input type="text" placeholder="Nombre" name="nombre" id="nombre" required>
+        <input type="text" placeholder="Apellido" name="apellido" id="apellido" required>
+        <input type="text" placeholder="Edad" name="edad" id="edad" required>
+        <select name="sexo" id="sexo">
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+        <input type="submit" value="Guardar">
+    </form>
+  </aside>
+  <article class="main">
+    <div class="container">
+          <!--div para la camara-->
+        <div class="webcam-container">
+          <div id="webcam-container"></div>
+        </div>
+        <!--div para el label-->
+        <div class="label-container">
+          <div id="label-container"></div> 
+        </div>
+        <!--div para las imagenes-->
+      <div class="imagenes">
+        <div id="imagenes"></div>
+      </div>
+      <!--div para los botones-->
+      <div class="btn2">
+        <button type="button" id="btn-Reiniciar" >Reiniciar</button>
+        <!-- <button type="button" id="btn-start">Start</button> -->
+      </div>
+  </article>
+
+  <footer class="footer">
+    <p>Proyecto de Anatomía</p>
+  </footer>
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  <script src="js/practica.js" type="module"></script>
 </body>
 </html>
