@@ -8,6 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/estilo.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <title> Anatomía </title>
 </head>
 <body class="grid-container">
@@ -32,8 +34,8 @@
           <option value="Masculino">Masculino</option>
           <option value="Femenino">Femenino</option>
         </select>
-        <input type="submit" value="Guardar">
-    </form>
+        <input type="submit" value="Nueva prueba">
+          </form>
   </aside>
   <article class="main">
     <div class="container">
@@ -41,6 +43,7 @@
         <div class="webcam-container">
           <div id="webcam-container"></div>
         </div>
+        <div class="loading-bar" id="loading">guardando...</div>
         <!--div para el label-->
         <div class="label-container">
           <div id="label-container"></div> 
@@ -52,6 +55,7 @@
       <!--div para los botones-->
       <div class="btn2">
         <button type="button" id="btn-Reiniciar" >Reiniciar</button>
+        <button type="button" id="btn-Enviar" >Enviar</button>
         <!-- <button type="button" id="btn-start">Start</button> -->
       </div>
   </article>

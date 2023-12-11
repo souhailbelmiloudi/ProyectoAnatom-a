@@ -1,10 +1,15 @@
 let breaks = true;
-import { captureImage, descargaImagen,DatosForm,idAleatorio } from './funcion.js';
+import { captureImage, descargaImagen, DatosForm, idAleatorio } from './funcion.js';
+import { saveData } from './firebase.js';
 
 // const btn_start = document.getElementById('btn-start');
 const btn_Reiniciar=document.getElementById('btn-Reiniciar');
 const imagenes=document.getElementById('imagenes');
 const form = document.getElementById('form-datos');
+const btn_guardar = document.getElementById('btn-Enviar');
+const loading = document.getElementById('loading');
+const collection = 'practica';
+let img;
 let datos = {};
 
 // the link to your model provided by Teachable Machine export panel
@@ -43,7 +48,6 @@ async function init() {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     datos = DatosForm(form.nombre.value, form.apellido.value, form.edad.value, form.sexo.value);
-    console.log(datos.nombre);
     init();
 });
 
@@ -64,11 +68,16 @@ async function predict() {
         labelContainer.childNodes[i].innerHTML = classPrediction;
         if (breaks) {
             if (prediction[i].probability >= 0.90 && i == 1) {
-                const img=captureImage(prediction[i].className, webcam.canvas);
+                 img=captureImage(prediction[i].className, webcam.canvas);
                 imagenes.appendChild(img);
-                console.log(descargaImagen(img,idAleatorio(),datos.nombre,datos.apellido));
+               Swal.fire({
+                title: "Posibilidad de que la muestra sea patológica.",
+                text: "Confirma que la foto obtenida es correcta para ser enviada al patólogo.",
+                icon: "warning",
+                });
                 breaks = false;
-                btn_Reiniciar.style.display='inline';
+                btn_Reiniciar.style.display = 'inline';
+                btn_guardar.style.display = 'inline';
             }
         }
     }
@@ -77,5 +86,20 @@ async function predict() {
 btn_Reiniciar.addEventListener('click',()=>{
     breaks=true;
     imagenes.innerHTML='';
-    btn_Reiniciar.style.display='none';
+    btn_Reiniciar.style.display = 'none';
+    btn_guardar.style.display = 'none';
+});
+
+btn_guardar.addEventListener('click',  async (e) => {
+
+    descargaImagen(img, idAleatorio(), datos.nombre, datos.apellido)
+    datos.imagen = img.src;
+    loading.style.display = 'block';
+    await saveData(collection, datos);
+    loading.style.display = 'none';
+  Swal.fire({
+    title: "Datos guardados",
+    html: `Nombre: ${datos.nombre} <br> Apellido: ${datos.apellido} <br> Edad: ${datos.edad} <br> Sexo: ${datos.sexo} <br>`,
+    icon: "success",
+});
 });
