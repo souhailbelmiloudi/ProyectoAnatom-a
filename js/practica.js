@@ -63,7 +63,7 @@ async function predict() {
             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
         labelContainer.childNodes[i].innerHTML = classPrediction;
         if (breaks) {
-            if (prediction[i].probability >= 0.90 && i == 2) {
+            if (prediction[i].probability >= 0.90 && i == 1) {
                 const img=captureImage(prediction[i].className, webcam.canvas);
                 imagenes.appendChild(img);
                 console.log(descargaImagen(img,idAleatorio(),datos.nombre,datos.apellido));
