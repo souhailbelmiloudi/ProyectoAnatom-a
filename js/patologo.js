@@ -1,10 +1,7 @@
 import {
-    saveData, 
     getDataChanged_collection,
-    getDataChanged_document,
     deleteData,
     getData,
-    getDataCollection,
     updateData
     } from "./firebase.js"
     const contenedor2 = document.getElementById('contenedor2')
@@ -14,7 +11,7 @@ const formulario = document.getElementById('formulario')
 const collection = 'practica'
 
 const mostrarPacientes = (snapshot) => {
-  alert("hola")
+
     contenedor.innerHTML = ''
     snapshot.forEach(doc => {
         const div =document.createElement('div')
@@ -40,16 +37,20 @@ const mostrarPacientes = (snapshot) => {
             const dato = await getData(id,collection);
 
             const { value: formValues } = await Swal.fire({
-                title: "Nuevos Datos",
+                title: "Datos del paciente",
                 html: `
                   <label for="nombre">Nombre</label>
-                  <input id="Nombre" class="swal2-input" value=${dato.data().nombre}>
+                  <input id="Nombre" class="swal2-input" value=${dato.data().nombre} redonly>
                   <label for="nombre">Apellido</label >
-                  <input id="apellido" class="swal2-input" value=${dato.data().apellido}>
+                  <input id="apellido" class="swal2-input" value=${dato.data().apellido} redonly>
                   <label for="nombre">Edad</label>
-                  <input id="edad" class="swal2-input" value=${dato.data().edad}>
+                  <input id="edad" class="swal2-input" value=${dato.data().edad} redonly>
+                  <label for="nombre">Sexo</label>
+                  <input id="sexo" class="swal2-input" value=${dato.data().sexo} redonly>
+                  <label for="nombre">Imagen</label> <br> <br>
+                  <img src=${dato.data().imagen} alt="imagen" width="300" height="300">
                 `,
-                showCancelButton: true,
+                
                 focusConfirm: false,
                 preConfirm: () => {
                   return{
