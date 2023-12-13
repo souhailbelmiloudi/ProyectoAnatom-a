@@ -8,6 +8,7 @@ const imagenes=document.getElementById('imagenes');
 const form = document.getElementById('form-datos');
 const btn_guardar = document.getElementById('btn-Enviar');
 const loading = document.getElementById('loading');
+
 const collection = 'practica';
 let img;
 let datos = {};
@@ -72,9 +73,10 @@ async function predict() {
                 imagenes.appendChild(img);
                Swal.fire({
                 title: "Posibilidad de que la muestra sea patológica.",
-                text: "Confirma que la foto obtenida es correcta para ser enviada al patólogo.",
+                text: "Confirmaaaaa que la foto obtenida es correcta para ser enviada al patólogo.",
                 icon: "warning",
-                });
+               });
+                
                 breaks = false;
                 btn_Reiniciar.style.display = 'inline';
                 btn_guardar.style.display = 'inline';
@@ -103,3 +105,5 @@ btn_guardar.addEventListener('click',  async (e) => {
     icon: "success",
 });
 });
+
+

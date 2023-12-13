@@ -196,6 +196,11 @@ align-items: center;
   cursor: pointer;
 }
 
+#btn-info{
+  display: none;
+
+}
+
 .btn2{
   grid-area: btn;
   display: flex;
