@@ -8,6 +8,7 @@ const imagenes=document.getElementById('imagenes');
 const form = document.getElementById('form-datos');
 const btn_guardar = document.getElementById('btn-Enviar');
 const loading = document.getElementById('loading');
+const btn_info = document.getElementById('btn-info');
 const collection = 'practica';
 let img;
 let datos = {};
@@ -76,6 +77,7 @@ async function predict() {
                 icon: "warning",
                 });
                 breaks = false;
+                btn_info.style.display = 'inline';
                 btn_Reiniciar.style.display = 'inline';
                 btn_guardar.style.display = 'inline';
             }
