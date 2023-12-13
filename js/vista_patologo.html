@@ -6,106 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ver datos en firebase</title>
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="../css/estilo.css">
     <style>
-        body{
-            
-            color: rgb(127, 138, 185);
-            font-family: Arial, Helvetica, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .contenedor1{
-            border: 2px solid rgb(124, 175, 219);
-            border-radius: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            width:90%;
-        }
-        
-        .item{
-          
-            margin: 10px;
-            color: rgb(58, 83, 105);
-            padding: 10px;
-        }
-        .item h2{
-            color: rgb(20, 145, 254);
-        }
-        .item p{
-            color: rgb(127, 138, 185);
-        }
-        .item b{
-            color: rgb(18, 29, 81);
-        }
-        form{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        input{
-            margin: 10px;
-            padding: 10px;
-            border-radius: 10px;
-            border: 2px solid rgb(124, 175, 219);
-        }
-       /* Estilos para el botón */
-#btnmostrar {
-  /* Estilos específicos para el botón con el ID btnmostrar */
-  /* Cambia el color de fondo */
-  background-color: #3498db;
-  /* Cambia el color del texto */
-  color: #fff;
-  /* Añade relleno alrededor del texto */
-  padding: 10px 20px;
-  /* Añade bordes redondeados */
-  border-radius: 5px;
-  /* Establece un borde sólido */
-  border: 1px solid #3498db;
-  /* Cambia el cursor al pasar el ratón por encima */
-  cursor: pointer;
-  /* Establece una transición suave para cambios */
-  transition: background-color 0.3s, color 0.3s;
-}
-
-/* Estilos cuando el ratón está sobre el botón */
-#btnmostrar:hover {
-  /* Cambia el color de fondo al pasar el ratón por encima */
-  background-color: #2980b9;
-  /* Cambia el color del texto al pasar el ratón por encima */
-  color: #fff;
-}
-
-        #btnEliminar{
-            background-color: rgb(255, 0, 0);
-            border: 1px solid rgb(255, 0, 0);
-            padding: 10px;
-            border-radius: 10px;
-            color: rgb(18, 29, 81);
-            font-weight: bold;
-        }
+    
     </style>
 </head>
 <body>
-    <h1>Práctica ver datos en firebase</h1>
+<div id="contenoder_medico">
+    <h1>Vista de datos de los médicos</h1>
     <div class="contenedor1" id="contenedor">   
     </div>
-    <h1>Práctica buscar datos con id en firebase</h1>
+    <h1>Buscar un Paciente</h1>
     <div class="contenedor1" id="contenedor2">   
         <form action="" id="formulario">
-            <label for="id">Introduce el id del usuario que quieres buscar</label>
+            <label for="id">Introduce el id del Paciente que quieres buscar</label>
             <input type="text" name="id" id="id">
-            <input type="submit" value="Buscar usuario">
+            <input type="submit" value="Buscar Paciente">
         
         </form>
     </div>
 
-
+</div>
 <!-- Le damos vidilla al asunto que para eso estamos en Desarrollo web cliente -->
   <script src="./patologo.js"  type="module"></script>
 </body>
