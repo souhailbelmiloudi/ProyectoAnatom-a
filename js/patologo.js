@@ -13,7 +13,8 @@ const contenedor = document.getElementById('contenedor')
 const formulario = document.getElementById('formulario')
 const collection = 'practica'
 
-const mostrarPacientes = (snapshot)=> {
+const mostrarPacientes = (snapshot) => {
+  alert("hola")
     contenedor.innerHTML = ''
     snapshot.forEach(doc => {
         const div =document.createElement('div')
