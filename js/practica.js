@@ -73,9 +73,10 @@ async function predict() {
                 imagenes.appendChild(img);
                Swal.fire({
                 title: "Posibilidad de que la muestra sea patológica.",
-                text: "Confirma que la foto obtenida es correcta para ser enviada al patólogo.",
+                text: "Confirmaaaaa que la foto obtenida es correcta para ser enviada al patólogo.",
                 icon: "warning",
-                });
+               });
+                
                 breaks = false;
                 btn_info.style.display = 'inline';
                 btn_Reiniciar.style.display = 'inline';
