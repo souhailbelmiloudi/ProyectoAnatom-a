@@ -16,7 +16,6 @@ export const descargaImagen = (img,idAleatorio,nombre,apellido) => {
     downloadLink.click();
     // Eliminar el enlace después de la descarga
     document.body.removeChild(downloadLink);
-    return downloadLink.download;
 }
 export const DatosForm = ( nombre, apellido, edad , sexo) => {
     const datos = {
