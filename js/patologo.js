@@ -10,9 +10,15 @@ const contenedor = document.getElementById('contenedor')
 const formulario = document.getElementById('formulario')
 const collection = 'practica'
 
-const mostrarPacientes = (snapshot) => {
 
-    contenedor.innerHTML = ''
+const mostrarPacientes = (snapshot) => {
+  Swal.fire({
+    title: "Pacientes",
+    text: "nuevos pacientes",
+    icon: "success",
+    });
+  contenedor.innerHTML = ''
+ 
     snapshot.forEach(doc => {
         const div =document.createElement('div')
         div.classList.add('item')
@@ -38,7 +44,8 @@ const mostrarPacientes = (snapshot) => {
 
             const { value: formValues } = await Swal.fire({
                 title: "Datos del paciente",
-                html: `
+              html: `
+                <div sytle="display:flex; flex-direction:column; margin: 0 auto; width: 500px;">
                   <label for="nombre">Nombre</label>
                   <input id="Nombre" class="swal2-input" value=${dato.data().nombre} redonly>
                   <label for="nombre">Apellido</label >
@@ -49,7 +56,7 @@ const mostrarPacientes = (snapshot) => {
                   <input id="sexo" class="swal2-input" value=${dato.data().sexo} redonly>
                   <label for="nombre">Imagen</label> <br> <br>
                   <img src=${dato.data().imagen} alt="imagen" width="300" height="300">
-                `,
+               </div> `,
                 
                 focusConfirm: false,
                 preConfirm: () => {
