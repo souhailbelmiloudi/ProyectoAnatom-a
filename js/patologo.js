@@ -9,12 +9,13 @@ import {
 const contenedor = document.getElementById('contenedor')
 const formulario = document.getElementById('formulario')
 const collection = 'practica'
+const notificacion = false;
 
 
 const mostrarPacientes = (snapshot) => {
   Swal.fire({
     title: "Pacientes",
-    text: "nuevos pacientes",
+    text: "Nuevos pacientes",
     icon: "success",
     });
   contenedor.innerHTML = ''
@@ -24,7 +25,7 @@ const mostrarPacientes = (snapshot) => {
         div.classList.add('item')
         div.innerHTML=`
         
-        <h2> Codigo Muestra :${doc.id}</h2>
+        <h2> Codigo  :${doc.id}</h2>
         <p> <b>Nombre :</b>${doc.data().nombre}</p>
         <p><b>Apellido :</b>${doc.data().apellido}</p>
         <p><b>Edad :</b>${doc.data().edad}</p>
@@ -47,13 +48,13 @@ const mostrarPacientes = (snapshot) => {
               html: `
                 <div sytle="display:flex; flex-direction:column; margin: 0 auto; width: 500px;">
                   <label for="nombre">Nombre</label>
-                  <input id="Nombre" class="swal2-input" value=${dato.data().nombre} redonly>
+                  <input id="Nombre" class="swal2-input" value=${dato.data().nombre} >
                   <label for="nombre">Apellido</label >
-                  <input id="apellido" class="swal2-input" value=${dato.data().apellido} redonly>
+                  <input id="apellido" class="swal2-input" value=${dato.data().apellido} >
                   <label for="nombre">Edad</label>
-                  <input id="edad" class="swal2-input" value=${dato.data().edad} redonly>
+                  <input id="edad" class="swal2-input" value=${dato.data().edad} >
                   <label for="nombre">Sexo</label>
-                  <input id="sexo" class="swal2-input" value=${dato.data().sexo} redonly>
+                  <input id="sexo" class="swal2-input" value=${dato.data().sexo} >
                   <label for="nombre">Imagen</label> <br> <br>
                   <img src=${dato.data().imagen} alt="imagen" width="300" height="300">
                </div> `,
@@ -78,10 +79,18 @@ const mostrarPacientes = (snapshot) => {
         
         })
 
-    
+        
 
         contenedor.appendChild(div)
     });
+  if (notificacion) { 
+    Swal.fire({
+      title: "Pacientes",
+      text: "nuevos pacientes",
+      icon: "success",
+    });
+    notificacion = false;
+  }
   }
  getDataChanged_collection(collection , mostrarPacientes)
 
