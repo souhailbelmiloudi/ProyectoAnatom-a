@@ -24,7 +24,7 @@ const mostrarPacientes = (snapshot) => {
         div.classList.add('item')
         div.innerHTML=`
         
-        <h2>${doc.id}</h2>
+        <h2> Codigo Muestra :${doc.id}</h2>
         <p> <b>Nombre :</b>${doc.data().nombre}</p>
         <p><b>Apellido :</b>${doc.data().apellido}</p>
         <p><b>Edad :</b>${doc.data().edad}</p>
